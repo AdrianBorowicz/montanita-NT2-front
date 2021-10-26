@@ -1,7 +1,11 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/Carrito">Carrito</router-link> |
+    <router-link to="/Nosotros">Nosotros</router-link> |
+    <router-link to="/Contacto">Contacto</router-link> |
+    <router-link class="sesion" to='/Login'>Login</router-link>
+    <router-link class="sesion" to='/Register'>Register</router-link>
   </div>
   <router-view />
 </template>
@@ -27,4 +31,10 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+#sesion{
+  position: right;
+  
+}
+
 </style>
