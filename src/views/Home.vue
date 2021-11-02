@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="grilla-productos">
+    <div class="product-container">
       <ProductoGrilla v-for="product in productList" v-bind:producto="product" v-bind:key="product.id"></ProductoGrilla>
     </div>
   </div>
@@ -28,3 +28,14 @@ export default {
   } 
 };
 </script>
+<style scoped>
+  .product-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
+</style>
