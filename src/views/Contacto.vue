@@ -3,3 +3,12 @@
     <h1>Pagina de contacto</h1>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Contacto",
+  components: {
+    
+  },
+};
+</script>

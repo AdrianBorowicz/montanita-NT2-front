@@ -4,7 +4,7 @@
     <router-link to="/Carrito">Carrito</router-link> |
     <router-link to="/Nosotros">Nosotros</router-link> |
     <router-link to="/Contacto">Contacto</router-link> |
-    <router-link class="sesion" to='/Login'>Login</router-link>
+    <router-link class="sesion" to='/Login'>Login</router-link> |
     <router-link class="sesion" to='/Register'>Register</router-link>
   </div>
   <router-view />
@@ -38,3 +38,7 @@
 }
 
 </style>
+
+<script>
+  
+</script>
