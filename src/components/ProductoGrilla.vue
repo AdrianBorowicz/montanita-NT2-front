@@ -3,6 +3,8 @@
     <img ref=""/>
     <h1>{{producto.name}}</h1>
     <h5>Price: {{producto.price}}</h5>
+    
+
 
   </div>
 </template>

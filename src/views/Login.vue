@@ -8,6 +8,8 @@
       </div>
       <label>Ingrese Contraseña</label>
       <input type="text" required placeholder="password"/>
+
+      <button>Entrar</button>
     </div>
   </div>
 </template>
@@ -17,8 +19,8 @@
 
 export default {
   name: "Login",
-  components: {
-    
-  },
+  data(){
+    return {}
+  }
 };
 </script>
