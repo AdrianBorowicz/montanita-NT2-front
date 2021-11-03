@@ -12,10 +12,8 @@
           <input v-model="user.password" type="password" required placeholder="password"/>
         </div>
       <button @click="login()">Entrar</button>
-      </div>
-      
+      </div> 
     </div>
-      {{this.$store.getters.getUser}}
   </div>
 </template>
 
@@ -23,6 +21,8 @@
   .form{
     border: solid black 0.1rem;
     width: 70%;
+    align-content: center;
+    
   }
 </style>
 
@@ -34,7 +34,6 @@ export default {
   data(){
     return {
       user: {username:'', password: ''},
-
       userHc: 'admin',
       passwordhc: 'admin',
     }
@@ -49,9 +48,13 @@ export default {
         this.$store.commit('setUser', this.user)
         this.$router.push({ name: 'Home' })
       }else{
-        alert('Usuario o contraseña incorrectos!')
+        this.user.username='';
+        this.user.password='';
+        alert('Usuario o contraseña incorrectos!');
       }
     }
-    }
+    },
+  computed:{
+  }
   }
 </script>

@@ -5,17 +5,15 @@
     <router-link to="/Nosotros">Nosotros</router-link>
     <router-link to="/Contacto">Contacto</router-link>
     
-    <template v-if="!this.$store.getters.isLogin">
+    <div v-if="this.logState">
       <router-link class="sesion" to="/Login">Login</router-link>
       <router-link class="sesion" to="/Register">Register</router-link>
-    </template>
-    
-    <button id="logout" v-else @click="this.$store.commit('logout')"
-    >
-      Logout</button>
-    <router-link v-if="!this.$store.getters.isLogin" to="/AgregarProductos"
-      >Agregar Productos
-    </router-link>
+    </div>
+    <div v-else>
+      <button id="logout" @click="this.logout">Logout</button>
+      <router-link to="/AgregarProductos">Agregar Productos</router-link>
+    </div>
+
   </div>
   <router-view />
 </template>
@@ -53,4 +51,19 @@
 </style>
 
 <script>
+export default{
+  name: 'Carrito',
+  methods: {
+    logout(){
+      this.$store.commit('logout');
+    }
+  },
+  computed:{
+    logState(){
+      return (this.$store.state.user==null);
+    }
+  }
+    
+  
+}
 </script>

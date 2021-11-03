@@ -14,22 +14,21 @@ const store=createStore({
     },
     mutations:{
         setUser(state, user){
-            this.user=user;
+            state.user=user;
         },
-        logout(){
-            this.state.user=null;
+        logout(state){
+            state.user=null;
         }
     },
     actions:{
-        
     },
     getters:{
-        isLogin: state=>{
-            return state.user!=null;
+        isLogin: (state)=>{
+            return state.user==!null;
         },
-        getUser: state=>{
+        getUser: (state)=>{
             return state.user;
-        },
+        }
     },
    
 });

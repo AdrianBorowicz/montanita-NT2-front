@@ -20,10 +20,7 @@
 </template>
 
 <style scoped>
-  .items-grid{
-    
-
-  }
+  
 </style>
 
 <script>
