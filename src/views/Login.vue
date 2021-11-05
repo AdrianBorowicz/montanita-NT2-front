@@ -1,28 +1,20 @@
 <template>
   <div class="login">
     <h1>Login</h1>
-    <div class="container">
-      <div class="form">
-        <div class="row">
-          <label>Ingrese usuario</label>
-          <input v-model="user.username" type="text" required placeholder="user"/>
-        </div>
-        <div class="row">
-          <label>Ingrese Contraseña</label>
-          <input v-model="user.password" type="password" required placeholder="password"/>
-        </div>
-      <button @click="login()">Entrar</button>
-      </div> 
-    </div>
+    <form class="form" @submit.prevent="login">
+      <p>Usuario</p>
+      <input v-model="user.username" type="text" required placeholder="Username"/>
+      <p>Contraseña</p>
+      <input v-model="user.password" type="password" required placeholder="Password"/>
+      <button @click="login()" type="submit">Login</button>
+    </form>
   </div>
 </template>
 
 <style scoped>
   .form{
     border: solid black 0.1rem;
-    width: 70%;
-    align-content: center;
-    
+    margin: 0px 150px 0px 150px;
   }
 </style>
 
@@ -34,27 +26,25 @@ export default {
   data(){
     return {
       user: {username:'', password: ''},
-      userHc: 'admin',
-      passwordhc: 'admin',
+      //userHc: 'admin',
+      //passwordhc: 'admin',
     }
   },
   props:{
     
   },
   methods:{
-    login(){
-      if (this.user.username===this.userHc && this.user.password===this.passwordhc){
-        alert('Se ha logueado correctamente');
-        this.$store.commit('setUser', this.user)
-        this.$router.push({ name: 'Home' })
-      }else{
-        this.user.username='';
-        this.user.password='';
-        alert('Usuario o contraseña incorrectos!');
+    async login(){
+        if (await this.$store.dispatch('login', this.user)){
+          alert('Bienvenido, '+this.user.username+'!!');
+          this.$router.push({ name: 'Home' });
+        }else{
+          alert('Error. Ingrese bien sus datos!');
+          this.user.username='';
+          this.user.password='';
+        }
+        
       }
     }
-    },
-  computed:{
-  }
   }
 </script>

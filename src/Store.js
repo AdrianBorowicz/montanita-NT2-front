@@ -13,14 +13,18 @@ const store=createStore({
         }
     },
     mutations:{
-        setUser(state, user){
+        SET_USER(state, user){
             state.user=user;
+            localStorage.setItem('user', user);
         },
-        logout(state){
+        LOGOUT(state){
             state.user=null;
         }
     },
     actions:{
+        login({commit}, user){
+            commit('SET_USER', user);
+        }
     },
     getters:{
         isLogin: (state)=>{

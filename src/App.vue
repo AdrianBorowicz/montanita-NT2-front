@@ -7,7 +7,6 @@
     
     <div v-if="this.logState">
       <router-link class="sesion" to="/Login">Login</router-link>
-      <router-link class="sesion" to="/Register">Register</router-link>
     </div>
     <div v-else>
       <button id="logout" @click="this.logout">Logout</button>
@@ -55,7 +54,7 @@ export default{
   name: 'Carrito',
   methods: {
     logout(){
-      this.$store.commit('logout');
+      this.$store.commit('LOGOUT');
     }
   },
   computed:{

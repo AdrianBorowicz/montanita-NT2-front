@@ -1,11 +1,12 @@
 <template>
   <div>
-      aca se agregaran productos
+      <table></table>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'addProducts',
 
 }
 </script>
