@@ -33,6 +33,7 @@ const routes = [
     name: "Login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
+    meta: {requiresAuth: true},
   },
   {
     path: "/agregarProductos",
@@ -45,6 +46,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next)=>{
+  const loggedIn= localStorage.getItem('usuario');
+
+  if(to.matched.some(record => record.meta.requiresAuth) && loggedIn){
+    next('/');
+  }
+  next();
 });
 
 export default router;

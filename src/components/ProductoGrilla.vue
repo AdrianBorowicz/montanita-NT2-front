@@ -9,9 +9,9 @@
     </a>
     <div class="card-body">
       <a href="product.html">
-        <h2>{{producto.name}}</h2>
+        <h2>{{product.name}}</h2>
       </a>
-      <div class="price">{{producto.price}}</div>
+      <div class="price">{{product.price}}</div>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@
 export default {
   name: "ProductoGrilla",
   props: {
-    producto: {
+    product: {
       type: Object,
       default: null,
     },

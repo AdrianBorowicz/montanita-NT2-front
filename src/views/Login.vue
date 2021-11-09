@@ -8,6 +8,7 @@
       <input v-model="user.password" type="password" required placeholder="Password"/>
       <button @click="login()" type="submit">Login</button>
     </form>
+    {{this.$store.state}}
   </div>
 </template>
 
