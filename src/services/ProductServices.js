@@ -1,14 +1,14 @@
 import apiClient from 'apiClient';
 
 export default{
-    getProducts(){
-        return apiClient.getProducts('/products');
+    async getProducts(){
+        return await apiClient.getProducts('/products');
     },
-    postProducts(product){
-        apiClient.post('/products', product);
+    async postProducts(product){
+        await apiClient.post('/products', product);
     },
-    getProductById(id){
-        return apiClient.getProductById('/products/'+id);
+    async getProductById(id){
+        return await apiClient.getProductById('/products/'+id);
     },
     
 

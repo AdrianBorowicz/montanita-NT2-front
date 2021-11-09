@@ -1,11 +1,11 @@
 const apiClient=require("./apiClient");
 
 export default{
-    getCategories(){
-        return apiClient.get('/categories');
+    async getCategories(){
+        return await apiClient.get('/categories');
     },
-    postCategories(category){
-        apiClient.post('/categories', category);
+    async postCategories(category){
+        await apiClient.post('/categories', category);
     },
 
 }

@@ -36,7 +36,9 @@ export default {
   },
   methods:{
     async login(){
-        if (await this.$store.dispatch('login', this.user)){
+        
+        if (this.correctAuth()){
+          await this.$store.dispatch('login', this.user)
           alert('Bienvenido, '+this.user.username+'!!');
           this.$router.push({ name: 'Home' });
         }else{
