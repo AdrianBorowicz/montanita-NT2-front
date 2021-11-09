@@ -1,4 +1,7 @@
 <template>
+
+ <!-- probando -->
+
   <div class="carrito">
     <h1>Carrito de compras</h1>
     <table class="items-grid">
