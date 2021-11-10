@@ -1,13 +1,15 @@
 <template>
   <div class="home">
     <div class="product-container">
-      <ProductoGrilla v-for="product in productList" v-bind:producto="product" v-bind:key="product.id"></ProductoGrilla>
+      <ProductoGrilla v-for="product in productList" v-bind:product="product" v-bind:key="product._id"></ProductoGrilla>
     </div>
   </div>
 </template>
 
-<script>
-import ProductoGrilla from '../components/ProductoGrilla.vue'
+<script> 
+import ProductoGrilla from '../components/ProductoGrilla.vue';
+import ProductServices from '../services/ProductServices';
+
 
 export default {
   name: "Home",
@@ -16,14 +18,18 @@ export default {
   },
   data(){
     return{
-      productList: this.getProducts,
+      productList:{
+        type: Array,
+      }
     }
   },
-  computed:{
-    getProducts: function(){
-      return{}
-    }
-  } 
+  created: async function(){
+    let rta = await ProductServices.getProducts();
+    this.productList = rta.data;
+    console.log(this.productList);
+  }
+
+  
 };
 </script>
 <style scoped>

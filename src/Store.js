@@ -4,11 +4,9 @@ import {createStore} from 'vuex';
 const store=createStore({
     state(){
             return{
-            user: null,
+            user:{},
             carrito: [
-                {cantidad: 10, idProducto: 1},
-                {cantidad: 5, idProducto:2},
-                {cantidad: 1, idProducto:3},
+                
             ]
         }
     },
@@ -22,7 +20,7 @@ const store=createStore({
         }
     },
     actions:{
-        login({commit}, user){
+        setUser({commit}, user){
             commit('SET_USER', user);
         }
     },

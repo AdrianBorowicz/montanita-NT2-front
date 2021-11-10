@@ -1,7 +1,7 @@
-const apiClient = require('apiClient');
+import apiClient from './apiClient.js'
 
 export default{
-    async getLogin(user){
-        return await apiClient.get('/Users', user);
-    }
+    async postUsers(user){
+        return await (await apiClient.post('/user', user)).data;
+    },
 }

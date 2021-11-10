@@ -1,12 +1,12 @@
 <template>
   <div class="product-card">
-    <a href="product.html">
+    <router-link to="/Producto/:id">
       <img
         class="medium"
-        src={{producto.img}}
+        src={{product.image}}
         alt="product"
       />
-    </a>
+    </router-link>
     <div class="card-body">
       <a href="product.html">
         <h2>{{product.name}}</h2>

@@ -41,6 +41,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/AgregarProductos.vue"),
   },
+  {
+    path: "/detalleProducto/:id",
+    name: "DetalleProducto",
+    component: () =>
+      import(/* webpackChunkName: "register" */ "../views/DetalleProducto.vue"),
+  },
 ];
 
 const router = createRouter({
