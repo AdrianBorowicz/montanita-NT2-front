@@ -16,9 +16,9 @@
         required
         placeholder="Password"
       />
-      <button @click="login()" type="submit">Login</button>
+      <button @click.once="login()" type="submit">Login</button>
     </form>
-    {{ this.$store.user }}
+    <label v-if="this.$store.state.user != null">{{ resultado }}</label>
   </div>
 </template>
 
@@ -36,30 +36,33 @@ export default {
   name: "Login",
   data() {
     return {
-      user:{ username: "", password: "" },
+      user: { username: "", password: "" },
+      resultado: "",
     };
   },
   props: {},
   methods: {
-      async login() {
-        //console.log(this.user)
-        
-        UserServices.postUsers(this.user)
-        .then(data=>{
-          console.log(data)
-          if(data==!null){
-            this.$store.dispatch('setUser', data)
-            }
-        })
-        .catch(err=>{
-          console.log(err);
-          alert('Credenciales incorrectas. Vuelva a intentarlo!')
-        })
-
-
-        /* if(await UserServices.postUsers(this.user)!=null){
-          this.$store.dispatch('setUser', this.user).then(console.log(this.$store.user))
-        } */
+    async login() {
+      if (this.user.username != "" && this.user.password != "") {
+        UserServices.postUser(this.user)
+          .then(data => {
+            console.log(data)
+            let user = { username: this.user.username, token: data.data.token };
+            this.$store.dispatch("setUser", user);
+            this.resultado=data.data.message;
+            this.$router.push('/')
+          })
+          .catch((err) => {
+            //console.log(err.response.data.message)
+            this.resultado=err.response.data.message;
+            alert(err.response.data.message);
+            //this.resultado = err.data;
+          });
+      } else {
+        alert("Datos incompletos.");
+      }
+      this.user.username = "";
+      this.user.password = "";
     },
   },
 };

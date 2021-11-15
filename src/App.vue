@@ -12,9 +12,8 @@
       <button id="logout" @click="this.logout">Logout</button>
       <router-link to="/AgregarProductos">Agregar Productos</router-link>
     </div>
-
   </div>
-  <router-view />
+  <router-view/>
 </template>
 
 <style>
@@ -59,7 +58,7 @@ export default{
   },
   computed:{
     logState(){
-      return (this.$store.state.user==null);
+      return (!this.$store.state.user);
     }
   }
     

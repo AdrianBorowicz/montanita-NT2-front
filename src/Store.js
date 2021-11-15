@@ -4,7 +4,7 @@ import {createStore} from 'vuex';
 const store=createStore({
     state(){
             return{
-            user:{},
+            user:null,
             carrito: [
                 
             ]
@@ -17,7 +17,7 @@ const store=createStore({
         },
         LOGOUT(state){
             state.user=null;
-        }
+        },
     },
     actions:{
         setUser({commit}, user){
