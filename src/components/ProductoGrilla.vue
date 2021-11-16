@@ -1,18 +1,20 @@
 <template>
   <div class="product-card">
-    <router-link to="/Producto/:id">
-      <img
-        class="medium"
-        src={{product.image}}
-        alt="product"
-      />
+    <router-link to="/detalleProducto/:id">
+      <img class="medium" src="{{product.image}}" alt="product" />
     </router-link>
     <div class="card-body">
       <a href="product.html">
-        <h2>{{product.name}}</h2>
+        <h2>{{ product.name }}</h2>
       </a>
-      <div class="price">{{product.price}}</div>
+      {{ product.category_id.name }}
+      <label class="price">$ {{ product.price }}</label>
     </div>
+    <div>
+      <button @click="btnAgregarCarrito">Agregar</button>
+      <input type="number" value="1" min="1" max="10">
+    </div>
+    {{this.$store.state.carrito}}
   </div>
 </template>
 
@@ -22,7 +24,11 @@ export default {
   props: {
     product: {
       type: Object,
-      default: null,
+    },
+  },
+  methods: {
+    btnAgregarACarrito() {
+      this.$store.commit('ADDTOCART', this.product)
     },
   },
 };
@@ -30,20 +36,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  div{
-    display: block;
-  }
-  .product-card{
-    border: 0.1rem #c0c0c0 solid;
-    background-color: #f8f8f8f8;
-    border-radius: 0.5rem;
-    margin: 1rem;
-  }
-  .card-body{
-    padding: 0.1rem;
-  }
-  .price{
-    font-size: 1rem;
-  }
-
+.product-card {
+  border: solid 1px;
+  border-radius: 10px;
+  min-height: 200px;
+  font-weight: bold;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+}
 </style>

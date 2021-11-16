@@ -1,8 +1,8 @@
 import apiClient from './apiClient';
 
 export default{
-    getProducts: ()=>{
-        return apiClient.get('/products');
+    async getProducts(){
+        return await apiClient.get('/products');
     },
     postProducts(product){
         apiClient.post('/products', product);

@@ -18,6 +18,9 @@ const store=createStore({
         LOGOUT(state){
             state.user=null;
         },
+        ADDTOCART(state, product){
+            state.carrito.push(product);
+        }
     },
     actions:{
         setUser({commit}, user){

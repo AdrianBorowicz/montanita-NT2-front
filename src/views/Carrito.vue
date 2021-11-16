@@ -4,7 +4,7 @@
 
   <div class="carrito">
     <h1>Carrito de compras</h1>
-    <table class="items-grid">
+<!--     <table class="items-grid">
       <thead>
         <th>Nombre</th>
         <th>Imagen</th>
@@ -18,7 +18,9 @@
           <button>Agregar</button>
         </tr>
       </tbody>
-    </table>
+    </table> -->
+
+    
   </div>
 </template>
 
