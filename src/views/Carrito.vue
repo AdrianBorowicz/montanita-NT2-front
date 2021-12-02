@@ -1,47 +1,48 @@
 <template>
-
- <!-- probando -->
-
-  <div class="carrito">
-    <h1>Carrito de compras</h1>
-<!--     <table class="items-grid">
-      <thead>
-        <th>Nombre</th>
-        <th>Imagen</th>
-        <th>Cantidad</th>
-        <th>Precio Ind.</th>
-        <th>Precio Subtot.</th>
-      </thead>
-      <tbody>
-        <tr v-for="item in this.$store.state.carrito" v-bind:key="item.idProducto">
-          <input type="number" value="1" min="1" max="20">
-          <button>Agregar</button>
-        </tr>
-      </tbody>
-    </table> -->
-
-    
-  </div>
+<div class="container">
+      <h4>Carrito de compras</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Acción</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody id="items">
+                <Item 
+                v-for = "item in items" :key = "item.id"
+                :item = "item"
+                />
+        </tbody>
+        <tfoot>
+          <tr id="footer">
+            <th scope="row" colspan="5" v-if="Object.keys(items).length === 0" >Carrito vacío - comience a comprar!</th>
+            <Footer v-else />
+          </tr>
+        </tfoot>
+      </table>
+      
+    </div>
+  
 </template>
 
-<style scoped>
-  
-</style>
-
 <script>
-
-
+import {useStore} from 'vuex'
+import {computed} from 'vue'
+import Item from '../components/Item.vue'
+import Footer from '../components/Footer.vue'
 export default {
-  name: "carrito",
-  data(){
-    return {
-      
+  components: {
+      Item,
+      Footer
+      },
+    setup() {
+        const store = useStore()
+        const items = computed(() => store.state.carrito)
+    return{items}
     }
-  },
-  props:{
-    
-  },
-  methods:{
-  }
 }
 </script>

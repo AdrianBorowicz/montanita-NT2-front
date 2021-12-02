@@ -1,36 +1,39 @@
 <template>
   <div class="product-card">
-    <router-link to="/detalleProducto/:id">
-      <img class="medium" src="{{product.image}}" alt="product" />
-    </router-link>
+    <router-link to="{name: 'DetalleProducto', params:{product: this.product}}">
+      <img class="medium" src="{{product.image}}" alt="" />
     <div class="card-body">
-      <a href="product.html">
         <h2>{{ product.name }}</h2>
-      </a>
-      {{ product.category_id.name }}
+      {{product.category_id.name}}
       <label class="price">$ {{ product.price }}</label>
     </div>
     <div>
-      <button @click="btnAgregarCarrito">Agregar</button>
-      <input type="number" value="1" min="1" max="10">
+      <button btn btn-danger btn-sm @click="agregar(product)" >Agregar</button>
+      <!-- <input v-model.number="cantidad" type="number" min="1" max="10" placeholder="1" default=1> -->
     </div>
-    {{this.$store.state.carrito}}
+      </router-link>
   </div>
 </template>
 
 <script>
+import {useStore} from 'vuex';
+
 export default {
   name: "ProductoGrilla",
   props: {
-    product: {
+    product:{
       type: Object,
-    },
+    }
   },
   methods: {
-    btnAgregarACarrito() {
-      this.$store.commit('ADDTOCART', this.product)
-    },
   },
+  setup(){
+    const store=useStore()
+    const agregar=(product, cantidad)=>{
+      store.dispatch('agregarAlCarrito', product, cantidad);
+    }
+    return {agregar}
+  }
 };
 </script>
 

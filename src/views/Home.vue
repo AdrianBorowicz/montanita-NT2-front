@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <div class="grid">
-        <ProductoGrilla
-          v-for="product in productList"
-          v-bind:product="product"
-          v-bind:key="product._id"
-        ></ProductoGrilla>
+      <ProductoGrilla
+        v-for="product in productList"
+        v-bind:product="product"
+        v-bind:key="product._id"
+      ></ProductoGrilla>
     </div>
   </div>
 </template>
@@ -31,11 +31,12 @@ export default {
       .then((data) => {
         this.productList = data.data;
         //console.log(this.productList);
-        console.log(data)
+        console.log(data);
+        //this.$store.state.productos = data.data;
       })
       .catch((err) => {
-        alert('Estamos teniendo dificultades, por favor intentelo luego.');
-        console.log(err)
+        alert("Estamos teniendo dificultades, por favor intentelo luego.");
+        console.log(err);
       });
   },
 };

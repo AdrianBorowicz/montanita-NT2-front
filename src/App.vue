@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
-    <router-link to="/Carrito">Carrito ({{this.$store.carrito}})</router-link>
+    <router-link to="/Carrito">Carrito ({{this.$store.getters.totalCantidad}})</router-link>
     <router-link to="/Nosotros">Nosotros</router-link>
     <router-link to="/Contacto">Contacto</router-link>
     
