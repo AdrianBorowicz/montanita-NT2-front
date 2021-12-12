@@ -11,18 +11,20 @@
             <th scope="col">Total</th>
           </tr>
         </thead>
+        <tfoot>
+            <tr id="footer">
+              <th scope="row" colspan="5" v-if="Object.keys(items).length === 0" >Carrito vacío - comience a comprar!</th>
+              
+            </tr>
+            <Footer v-if="Object.keys(items).length !== 0"/>
+        </tfoot>
         <tbody id="items">
                 <Item 
                 v-for = "item in items" :key = "item.id"
                 :item = "item"
                 />
         </tbody>
-        <tfoot>
-          <tr id="footer">
-            <th scope="row" colspan="5" v-if="Object.keys(items).length === 0" >Carrito vacío - comience a comprar!</th>
-            <Footer v-else />
-          </tr>
-        </tfoot>
+        
       </table>
       
     </div>

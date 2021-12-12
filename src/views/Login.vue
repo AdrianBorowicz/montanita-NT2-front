@@ -2,14 +2,12 @@
   <div class="login">
     <h1>Login</h1>
     <form class="form" @submit.prevent="login">
-      <p>Usuario</p>
       <input
         v-model="user.username"
         type="text"
         required
         placeholder="Username"
       />
-      <p>Contraseña</p>
       <input
         v-model="user.password"
         type="password"
@@ -23,10 +21,37 @@
 </template>
 
 <style scoped>
-.form {
-  border: solid black 0.1rem;
-  margin: 0px 150px 0px 150px;
+
+form {
+  display: grid;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin: 1rem auto 0 auto;
+  max-width: 600px;
+  padding: .5em;
 }
+form input {
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+form button {
+  background: lightgrey;
+  padding: 0.7em;
+  width: 100%;
+  border: 0;
+}
+form button:hover {
+  background: gold;
+}
+input {
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+}
+input:focus {
+  outline: 3px solid gold;
+}
+
 </style>
 
 <script>

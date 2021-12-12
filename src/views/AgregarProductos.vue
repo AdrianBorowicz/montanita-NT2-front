@@ -1,6 +1,9 @@
 <template>
   <div>
-      <table></table>
+      <form>
+        <input id="nombre" type="text"/>
+
+      </form>
   </div>
 </template>
 

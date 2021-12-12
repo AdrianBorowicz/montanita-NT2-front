@@ -19,14 +19,20 @@ export default {
   props: ["item"],
   setup() {
     const store = useStore();
-    const aumentar = (id) => {
-      store.commit("AUMENTAR", id);
+    const aumentar = (_id) => {
+      store.commit("AUMENTAR", _id);
     };
-    const disminuir = (id) => {
-      store.commit("DISMINUIR", id);
+    const disminuir = (_id) => {
+      store.commit("DISMINUIR", _id);
     };
 
     return { aumentar, disminuir };
   },
 };
 </script>
+
+<style>
+  td{
+    width: 20%;
+  }
+</style>

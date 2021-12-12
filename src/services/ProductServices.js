@@ -7,8 +7,8 @@ export default{
     postProducts(product){
         apiClient.post('/products', product);
     },
-    getProductById(id){
-        return apiClient.getProductById('/products/'+id);
+    getProductById(_id){
+        return apiClient.get('/product/'+_id);
     },
     
 

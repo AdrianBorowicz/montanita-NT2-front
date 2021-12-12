@@ -6,7 +6,8 @@ const store = createStore({
         return {
             user: null,
             productos: [],
-            carrito: {}
+            carrito: {},
+            product: {}
         }
     },
     mutations: {
@@ -28,10 +29,10 @@ const store = createStore({
             state.carrito = {}
         },
         AUMENTAR(state, payload) {
-            state.carrito[payload].cantidad = state.carrito[payload].cantidad + 1
+            state.carrito[payload].cantidad += 1
         },
         DISMINUIR(state, payload) {
-            state.carrito[payload].cantidad = state.carrito[payload].cantidad - 1
+            state.carrito[payload].cantidad -= 1
             if (state.carrito[payload].cantidad === 0) {
                 delete state.carrito[payload]
             }
@@ -41,17 +42,15 @@ const store = createStore({
     actions: {
         setUser({ commit }, user) {
             commit('SET_USER', user);
-        },
+        },        
         agregarAlCarrito({ commit, state }, producto) {
-            if(Object.prototype.hasOwnProperty.call({'producto._id': false},producto._id)){
-                producto.cantidad = state.carrito[producto.id].cantidad + 1;
+            if(state.carrito[producto._id]!=null){
+                producto.cantidad = state.carrito[producto._id].cantidad + 1;
             }else{
                 producto.cantidad = 1;
             }
             commit('SETCARRITO', producto)
-        },
-
-
+        }
     },
     getters: {
         isLogin: (state) => {
@@ -64,7 +63,7 @@ const store = createStore({
             return Object.values(state.carrito).reduce((acc, { cantidad }) => acc + cantidad, 0)
         },
         totalPrecio(state) {
-            return Object.values(state.carrito).reduce((acc, { cantidad, precio }) => acc + (cantidad * precio), 0)
+            return Object.values(state.carrito).reduce((acc, { cantidad, price }) => acc + (cantidad * price), 0)
         }
     },
 });
