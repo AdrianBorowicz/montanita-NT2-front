@@ -1,19 +1,21 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
-    <router-link to="/Carrito">Carrito ({{this.$store.getters.totalCantidad}})</router-link>
+    <router-link to="/Carrito"
+      >Carrito ({{ this.$store.getters.totalCantidad }})</router-link
+    >
     <router-link to="/Nosotros">Nosotros</router-link>
     <router-link to="/Contacto">Contacto</router-link>
-    
-    <div v-if="this.logState">
+
+    <div v-if="!this.isLogged">
       <router-link class="sesion" to="/Login">Login</router-link>
     </div>
     <div v-else>
       <button id="logout" @click="this.logout">Logout</button>
-      <router-link to="/AgregarProductos">Agregar Productos</router-link>
+      <router-link to="/ABMProductos">ABM Productos</router-link>
     </div>
   </div>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
@@ -49,19 +51,21 @@
 </style>
 
 <script>
-export default{
-  name: 'Carrito',
+export default {
+  name: "Carrito",
   methods: {
-    logout(){
-      this.$store.commit('LOGOUT');
-    }
+    logout() {
+      this.$store.commit("LOGOUT");
+      this.$router.push("/");
+    },
   },
-  computed:{
-    logState(){
-      return (!this.$store.state.user);
-    }
+  computed: {
+    isLogged() {
+      return this.$store.state.user!=null;
+    },
+  },
+  created: async function(){
+    this.$store.state.user = JSON.parse(localStorage.user)
   }
-    
-  
-}
+};
 </script>

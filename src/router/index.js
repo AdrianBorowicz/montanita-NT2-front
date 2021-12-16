@@ -33,13 +33,14 @@ const routes = [
     name: "Login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
-    meta: {requiresAuth: true},
+    //meta: {requiresAuth: true},
   },
   {
-    path: "/agregarProductos",
-    name: "AgregarProductos",
+    path: "/ABMProductos",
+    name: "ABMProductos",
+    meta: {requiresAuth: true},
     component: () =>
-      import(/* webpackChunkName: "register" */ "../views/AgregarProductos.vue"),
+      import(/* webpackChunkName: "register" */ "../views/ABMProductos.vue"),
   },
   {
     path: '/DetalleProducto/:_id',
@@ -55,12 +56,14 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next)=>{
-  const loggedIn= localStorage.getItem('usuario');
-
-  if(to.matched.some(record => record.meta.requiresAuth) && loggedIn){
+  const loggedIn= JSON.parse(localStorage.getItem('user'));
+  if(to.matched.some(record => record.meta.requiresAuth) && !loggedIn){
+    alert('¡No tiene acceso!')
     next('/');
-  }
-  next();
+  }else{
+    next();
+  } 
+  
 });
 
 export default router;

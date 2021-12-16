@@ -4,7 +4,7 @@ import { createStore } from 'vuex';
 const store = createStore({
     state() {
         return {
-            user: null,
+            user: {},
             productos: [],
             carrito: {},
             product: {}
@@ -13,14 +13,15 @@ const store = createStore({
     mutations: {
         SET_USER(state, user) {
             state.user = user;
-            localStorage.setItem('user', user);
+            localStorage.setItem("user", JSON.stringify(user));
         },
         LOGOUT(state) {
             state.user = null;
+            localStorage.setItem("user", null)
         },
         SETPRODUCTO(state, payload) {
             state.productos = payload
-            console.log(state.productos)
+            //console.log(state.productos)
         },
         SETCARRITO(state, payload) {
             state.carrito[payload._id] = payload
@@ -50,7 +51,7 @@ const store = createStore({
                 producto.cantidad = 1;
             }
             commit('SETCARRITO', producto)
-        }
+        },
     },
     getters: {
         isLogin: (state) => {

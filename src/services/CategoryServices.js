@@ -1,8 +1,8 @@
-const apiClient=require("./apiClient");
+import apiClient from './apiClient';
 
 export default{
     async getCategories(){
-        return await apiClient.get('/categories');
+        return apiClient.get('/categories');
     },
     async postCategories(category){
         await apiClient.post('/categories', category);

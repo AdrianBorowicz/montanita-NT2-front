@@ -30,11 +30,7 @@ export default {
     ProductServices.getProducts()
       .then((data) => {
         this.productList = data.data;
-        //console.log(this.productList);
-        console.log(data);
-        // Guardo en el store todos los productos obtenidos (esto no deberia de ser asi, pero es la manera mas rapida que encuentro para hacerlo ahora.)
         this.$store.state.productos = data.data;
-        console.log(this.$store.state.productos)
       })
       .catch((err) => {
         alert("Estamos teniendo dificultades con la carga de los productos, por favor intentelo luego.");

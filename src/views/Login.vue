@@ -16,7 +16,6 @@
       />
       <button @click.once="login()" type="submit">Login</button>
     </form>
-    <label v-if="this.$store.state.user != null">{{ resultado }}</label>
   </div>
 </template>
 
@@ -71,8 +70,7 @@ export default {
       if (this.user.username != "" && this.user.password != "") {
         UserServices.postUser(this.user)
           .then(data => {
-            console.log(data)
-            let user = { username: this.user.username, token: data.data.token };
+            let user = { username: data.data.username, token: data.data.token };
             this.$store.dispatch("setUser", user);
             this.resultado=data.data.message;
             this.$router.push('/')
